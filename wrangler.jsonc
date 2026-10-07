@@ -39,7 +39,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "growx-chitra-db",
-    "database_id": "00000000-0000-0000-0000-000000000000",
+    "database_id": "c14c2b4a-a3da-46f7-8ca5-7d81692f9512",
     "migrations_dir": "migrations"
   }],
   "queues": {
