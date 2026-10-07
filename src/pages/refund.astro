@@ -1,0 +1,10 @@
+---
+import ResourceLayout from "../layouts/ResourceLayout.astro";
+const sections = [{"id": "before-you-purchase", "label": "Before you purchase"}, {"id": "requesting-a-refund", "label": "Requesting a refund"}, {"id": "review-and-resolution", "label": "Review and resolution"}, {"id": "need-help", "label": "Need help?"}];
+---
+<ResourceLayout title="Refund policy" description="Refund guidance for Growx Chitra image-credit purchases." summary="How to report a payment problem or request a refund for an image pack." sections={sections} policy>
+<h2 id="before-you-purchase">Before you purchase</h2><p>Image packs are one-time purchases. Review the image count and price shown in WhatsApp before completing payment. Free lifetime images do not require a purchase.</p>
+    <h2 id="requesting-a-refund">Requesting a refund</h2><p>If a payment was duplicated, credits were not assigned after a confirmed payment, or you believe a purchase was made in error, contact Support with the purchasing WhatsApp number, payment reference and a short description. Do not send full card or bank credentials.</p>
+    <h2 id="review-and-resolution">Review and resolution</h2><p>We will review the payment-provider record and the credits associated with it. Where a refund is approved, it is sent to the original payment method and timing depends on the provider and bank. Credits associated with a refunded purchase may be removed if unused or adjusted as required to prevent duplicate value.</p>
+    <h2 id="need-help">Need help?</h2><p>Visit <a href="/support">Support</a> with your payment reference. This policy does not limit rights available under applicable law.</p>
+</ResourceLayout>

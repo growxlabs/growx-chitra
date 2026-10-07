@@ -1,0 +1,30 @@
+{
+  "name": "demo-video",
+  "version": "1.0.0",
+  "description": "Growx Chitra short product photo demonstration video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.533",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio --no-open",
+    "build": "remotion bundle",
+    "render:webm": "remotion render src/index.ts GrowxChitraDemo ../public/video/growx-chitra-demo.webm --codec=vp8",
+    "render:mp4": "remotion render src/index.ts GrowxChitraDemo ../public/video/growx-chitra-demo.mp4 --codec=h264",
+    "render:poster": "remotion still src/index.ts GrowxChitraDemo ../public/video/growx-chitra-demo-poster.png --frame=238",
+    "render": "npm run render:webm && npm run render:mp4 && npm run render:poster",
+    "upgrade": "remotion upgrade",
+    "lint": "tsc --noEmit"
+  }
+}

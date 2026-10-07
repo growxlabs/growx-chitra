@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { plans, whatsappUrl } from '../site';
+const rates = ['', '₹19.98 per image', '₹16.66 per image', '₹14.28 per image'];
+---
+<SiteLayout title="Pricing" description="Start with 5 free images. Buy one-time Chitra image packs from ₹999, with no subscription.">
+  <section class="packs-intro wrap"><p class="studio-kicker">PRICING</p><h1>Start with 5 free images.<br /><em>Buy more when you need them.</em></h1><p>One-time image packs. No subscription.<br />Choose your pack and complete your purchase on WhatsApp.</p></section>
+  <section class="wrap packs-section" aria-label="Compare image packs">
+    <div class="packs-grid">{plans.map((plan, i) => <article class:list={['pack', i === 0 && 'pack-free']}>
+      <h2>{plan.name}</h2>
+      <p class="pack-price">{plan.price}</p>
+      <p class="pack-count">{plan.detail}</p><p class="pack-rate">{i === 0 ? 'For eligible new businesses' : rates[i]}</p>
+      <a class:list={['button', i === 0 ? 'studio-primary' : 'pack-button']} href={whatsappUrl} target="_blank" rel="noreferrer">{i === 0 ? 'Try 5 images free' : `Choose ${plan.name}`} <span aria-hidden="true">↗</span></a>
+    </article>)}</div>
+    <div class="packs-details"><a href="/help">How Chitra works <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="packs-questions wrap"><div><p class="studio-kicker">BEFORE YOU BUY</p><h2>A few things<br />to know.</h2><p>Need help with a purchase?<br /><a href="/support">Contact support</a></p></div><div class="faq-list">
+    <details open><summary>Is this a subscription?</summary><p>No. Image packs are one-time purchases. Choose the image count you need and review the price in WhatsApp before paying.</p></details>
+    <details><summary>How do the free images work?</summary><p>Eligible new businesses receive five lifetime free images. These are a one-time allowance, not a monthly refill.</p></details>
+    <details><summary>How do I buy an image pack?</summary><p>Choose a pack above to open WhatsApp. Follow the purchase prompts and check the pack and price before completing payment. Credits are assigned after payment-provider verification.</p></details>
+    <details><summary>What if my payment or credits are wrong?</summary><p>Contact <a href="/support">Support</a> with your payment reference and purchasing WhatsApp number. Read the <a href="/refund">refund policy</a> for how requests are reviewed. Never send full card or bank credentials.</p></details>
+  </div></section>
+</SiteLayout>

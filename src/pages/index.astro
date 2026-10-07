@@ -1,0 +1,48 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+import { whatsappUrl } from '../site';
+---
+<SiteLayout title="Product photos, beautifully simple" description="Turn everyday product photos into clean, share-ready images with Growx Chitra. Start on WhatsApp with five free images.">
+  <section class="studio-hero wrap">
+    <div class="studio-copy">
+      <p class="studio-kicker">YOUR PRODUCT. A BETTER FIRST IMPRESSION.</p>
+      <h1>Good products.<br /> <em>Beautifully</em><br /> photographed.</h1>
+      <p class="studio-description">Turn the photos on your phone into images worth sharing. Just send your product photo on WhatsApp. Chitra takes it from there.</p>
+      <div class="studio-actions">
+        <a class="button studio-primary" href={whatsappUrl} target="_blank" rel="noreferrer">Try 5 images free <span aria-hidden="true">↗</span></a>
+        <a class="studio-secondary" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+      </div>
+      <p class="studio-note">Your first 5 images are on us. No new app to learn.</p>
+    </div>
+    <figure class="studio-demo">
+      <BeforeAfterSlider beforeSrc="/images/chitra-before.webp" afterSrc="/images/chitra-after.webp" beforeLabel="Your photo" afterLabel="With Chitra" />
+    </figure>
+  </section>
+  <section class="send-guide" id="how-it-works">
+    <div class="wrap guide-layout">
+      <div class="guide-intro"><p class="studio-kicker">BEFORE YOUR FIRST MESSAGE</p><h2>A little preparation.<br />A better starting photo.</h2><p>You don’t need a studio. Give Chitra a clear view of your product and the details you want it to work with.</p><a class="studio-secondary" href="/help">Read the photo guidelines <span aria-hidden="true">↗</span></a></div>
+      <div class="guide-checklist"><div class="guide-checklist-heading"><span>YOUR PHOTO CHECKLIST</span><span id="check-progress" aria-live="polite">0 of 3 checked</span></div><h3>Ready to send?</h3><p>Check your photo before opening WhatsApp.</p>
+        <label><input type="checkbox" /><span><strong>One product, fully in frame</strong><span>Leave a little room around the edges. Don’t cut off handles, lids or packaging.</span></span></label>
+        <label><input type="checkbox" /><span><strong>Details are easy to see</strong><span>Use even light and a sharp photo. Check labels, texture and colour.</span></span></label>
+        <label><input type="checkbox" /><span><strong>You can use this photo</strong><span>Send your own image or one you have permission to edit and share.</span></span></label>
+        <div class="guide-ready"><p id="check-status">Use this checklist as a quick guide.</p><a class="button studio-primary" href={whatsappUrl} target="_blank" rel="noreferrer">Open Chitra on WhatsApp <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="guide-notes"><article><p class="studio-kicker">MAKE IT YOURS</p><h3>Have your brand details handy.</h3><p>Use the brand setup prompts in WhatsApp to add your business name, colours, style and an optional logo.</p></article><article><p class="studio-kicker">BEFORE YOU POST</p><h3>Give the result a final check.</h3><p>Compare the edited image with your product. Check its shape, colour, labels and details before adding it to your catalogue.</p></article></div>
+    </div>
+  </section>
+  <script>
+    const guide = document.querySelector('.guide-checklist');
+    if (guide) {
+      const checks = Array.from(guide.querySelectorAll<HTMLInputElement>('input[type="checkbox"]'));
+      const update = () => {
+        const count = checks.filter(check => check.checked).length;
+        guide.querySelector('#check-progress')!.textContent = `${count} of 3 checked`;
+        guide.querySelector('#check-status')!.textContent = count === 3 ? 'Photo checked. You’re ready to start.' : 'Use this checklist as a quick guide.';
+      };
+      checks.forEach(check => check.addEventListener('change', update));
+      update();
+    }
+  </script>
+  <section class="studio-closing wrap"><div><p class="studio-kicker">MADE FOR YOUR NEXT CHAPTER</p><h2>Give your products<br />the photos they deserve.</h2></div><div><a class="button studio-primary" href={whatsappUrl} target="_blank" rel="noreferrer">Start on WhatsApp <span aria-hidden="true">↗</span></a><a class="studio-secondary" href="/pricing">Explore image packs</a></div></section>
+</SiteLayout>

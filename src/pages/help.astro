@@ -1,0 +1,15 @@
+---
+import ResourceLayout from '../layouts/ResourceLayout.astro';
+import { whatsappUrl } from '../site';
+---
+<ResourceLayout title="Help with Chitra" description="Answers about product photos, image packs and using Chitra on WhatsApp." summary="Start with a product photo and a WhatsApp message. Find answers about getting started, branding, payments and your data.">
+<div class="faq-list resource-faq">
+    <details><summary>How do I start?</summary><p>Open the Growx Chitra WhatsApp conversation, send a product photo, and follow the reply. The first five images are free for eligible new businesses.</p></details>
+    <details><summary>What kind of photo should I send?</summary><p>Send a clear photo of one product. A straightforward view with the product visible helps Chitra prepare a useful result.</p></details>
+    <details><summary>Can I add my business branding?</summary><p>Yes. Use the brand setup prompts in WhatsApp to add a business name, colours, style and an optional logo.</p></details>
+    <details><summary>What content is not accepted?</summary><p>Chitra is for product images. Sexual or 18+ imagery, deepfakes, face swaps, morphed imagery and identity manipulation are not processed. Read the <a href="/acceptable-use">Acceptable Use Policy</a>.</p></details>
+    <details><summary>How do I delete my data?</summary><p>In your WhatsApp conversation, send “DELETE MY DATA” and then “CONFIRM DELETE” within the confirmation window. You can cancel before confirming.</p></details>
+    <details><summary>How do image packs work?</summary><p>Choose a one-time image pack from WhatsApp. Current counts and prices are listed on the <a href="/pricing">Pricing page</a>.</p></details>
+    <p class="faq-contact">Still need a hand? <a class="text-link" href={whatsappUrl} target="_blank" rel="noreferrer">Message Chitra on WhatsApp <span aria-hidden="true">↗</span></a></p>
+  </div>
+</ResourceLayout>

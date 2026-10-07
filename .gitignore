@@ -1,0 +1,13 @@
+node_modules/
+.astro/
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.env
+.env.*
+dist/
+coverage/
+*.log
+/*.png
+/*.html

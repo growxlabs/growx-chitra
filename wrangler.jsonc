@@ -1,0 +1,51 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "growx-chitra",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "vars": {
+    "APP_ENV": "local",
+    "WHATSAPP_API_VERSION": "v23.0",
+    "OPENAI_IMAGE_MODEL": "gpt-image-2.5-flare",
+    "OPENAI_IMAGE_QUALITY": "low",
+    "PERSON_DETECTION_THRESHOLD": "0.5",
+    "MAX_GENERATION_ATTEMPTS": "2",
+    "WORKING_IMAGE_MAX_DIMENSION": "1024",
+    "IMAGE_RETENTION_DAYS": "30",
+    "ORIGINAL_IMAGE_RETENTION_DAYS": "30",
+    "GENERATED_IMAGE_RETENTION_DAYS": "30",
+    "BLOCKED_IMAGE_RETENTION_HOURS": "24",
+    "SAFETY_EVENT_RETENTION_DAYS": "30",
+    "MAX_UPLOAD_BYTES": "5242880",
+    "MAX_IMAGE_WIDTH": "8000",
+    "MAX_IMAGE_HEIGHT": "8000",
+    "MAX_IMAGES_PER_HOUR": "12",
+    "MAX_COMMANDS_PER_MINUTE": "20",
+    "MAX_PAYMENT_LINKS_PER_HOUR": "3",
+    "MAX_BRAND_SETUP_ATTEMPTS_PER_HOUR": "10",
+    "TERMS_VERSION": "v1",
+    "PRIVACY_VERSION": "v1",
+    "DELIVERY_TIMEOUT_HOURS": "24",
+    "RAZORPAY_MODE": "test",
+    "TERMS_URL": "",
+    "PRIVACY_URL": "",
+    "REFUND_POLICY_URL": "",
+    "PAYMENT_SUPPORT_CONTACT": "",
+    "SUPABASE_URL": "",
+    "SUPABASE_STORAGE_BUCKET": "growx-chitra-private"
+  },
+  "ai": { "binding": "AI" },
+  "images": { "binding": "IMAGES" },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "growx-chitra-db",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }],
+  "queues": {
+    "producers": [{ "binding": "CHITRA_JOBS", "queue": "growx-chitra-jobs" }],
+    "consumers": [{ "queue": "growx-chitra-jobs", "max_batch_size": 5, "max_batch_timeout": 1, "max_retries": 5, "retry_delay": 60 }]
+  },
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "observability": { "enabled": true, "logs": { "enabled": true, "invocation_logs": false } }
+}

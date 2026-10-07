@@ -1,0 +1,23 @@
+---
+import SiteLayout from './SiteLayout.astro';
+interface Props { title: string; description: string; summary: string; sections?: {id: string; label: string}[]; policy?: boolean; }
+const { title, description, summary, sections = [], policy = false } = Astro.props;
+const pages = [ ['/privacy', 'Privacy'], ['/terms', 'Terms'], ['/refund', 'Refund policy'], ['/acceptable-use', 'Acceptable use'], ['/help', 'Help'], ['/support', 'Support'] ];
+const path = Astro.url.pathname.replace(/\/$/, '');
+---
+<SiteLayout title={title} description={description}>
+  <div class="resource-shell wrap">
+    <aside class="resource-sidebar">
+      <a class="resource-back" href="/">Back to home</a>
+      <p class="resource-nav-label">HELP & POLICIES</p>
+      <nav aria-label="Help and policies">{pages.map(([href,label]) => <a href={href} aria-current={path === href ? 'page' : undefined}>{label}<span aria-hidden="true">↗</span></a>)}</nav>
+      <p class="resource-sidebar-note">Questions about Chitra?<br /><a href="/support">Contact support</a></p>
+    </aside>
+    <div class="resource-main">
+      <header class="resource-heading"><p class="studio-kicker">GROWX CHITRA / {policy ? 'POLICIES' : 'HELP'}</p><h1>{title}</h1><p class="resource-summary">{summary}</p>{policy && <p class="resource-date">Last updated <time datetime="2026-10-06">6 October 2026</time></p>}</header>
+      {sections.length > 0 && <nav class="resource-toc" aria-label="On this page"><p>On this page</p><div>{sections.map((section, i) => <a href={`#${section.id}`}><span>{String(i+1).padStart(2,'0')}</span>{section.label}</a>)}</div></nav>}
+      <article class="resource-body"><slot /></article>
+      <div class="resource-bottom"><p>Need something clarified?</p><a href={path === '/support' ? '/help' : '/support'}>{path === '/support' ? 'Read common questions' : 'Contact support'} <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </div>
+</SiteLayout>

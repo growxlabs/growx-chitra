@@ -1,0 +1,86 @@
+---
+interface Props {
+  beforeSrc: string;
+  afterSrc: string;
+  beforeLabel: string;
+  afterLabel: string;
+}
+
+const { beforeSrc, afterSrc, beforeLabel, afterLabel } = Astro.props;
+const position = 50;
+---
+
+<div class="comparison" aria-label="Before and after product photo comparison">
+  <img src={beforeSrc} alt="Original product photo" class="comparison__image" draggable="false" />
+
+  <div class="comparison__after" style={`clip-path: inset(0 0 0 ${position}%)`}>
+    <img src={afterSrc} alt="Growx Chitra processed product photo" class="comparison__image" draggable="false" />
+  </div>
+
+  <div
+    class="comparison__divider"
+    style={`left: ${position}%`}
+    role="slider"
+    tabindex="0"
+    aria-label="Before and after comparison"
+    aria-orientation="horizontal"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow={position}
+  >
+    <div class="comparison__handle" aria-hidden="true">↔</div>
+  </div>
+
+  <span class="comparison__label comparison__label--before">{beforeLabel}</span>
+  <span class="comparison__label comparison__label--after">{afterLabel}</span>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.comparison').forEach((comparison) => {
+    const after = comparison.querySelector<HTMLElement>('.comparison__after');
+    const divider = comparison.querySelector<HTMLElement>('.comparison__divider');
+    if (!after || !divider) return;
+
+    let position = 50;
+    let activePointer: number | null = null;
+
+    const setPosition = (next: number) => {
+      position = Math.max(0, Math.min(100, next));
+      after.style.clipPath = `inset(0 0 0 ${position}%)`;
+      divider.style.left = `${position}%`;
+      divider.setAttribute('aria-valuenow', String(Math.round(position)));
+      divider.setAttribute('aria-valuetext', `${Math.round(100 - position)}% of the processed photo revealed`);
+    };
+
+    const updateFromPointer = (event: PointerEvent) => {
+      const bounds = comparison.getBoundingClientRect();
+      setPosition(((event.clientX - bounds.left) / bounds.width) * 100);
+    };
+
+    comparison.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0) return;
+      activePointer = event.pointerId;
+      comparison.setPointerCapture(event.pointerId);
+      updateFromPointer(event);
+    });
+    comparison.addEventListener('pointermove', (event) => {
+      if (event.pointerId === activePointer) updateFromPointer(event);
+    });
+    const stopDragging = (event: PointerEvent) => {
+      if (event.pointerId === activePointer) activePointer = null;
+    };
+    comparison.addEventListener('pointerup', stopDragging);
+    comparison.addEventListener('pointercancel', stopDragging);
+
+    divider.addEventListener('keydown', (event) => {
+      const step = event.shiftKey ? 10 : 1;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') setPosition(position - step);
+      else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') setPosition(position + step);
+      else if (event.key === 'Home') setPosition(0);
+      else if (event.key === 'End') setPosition(100);
+      else return;
+      event.preventDefault();
+    });
+  });
+</script>
+

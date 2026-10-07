@@ -1,0 +1,27 @@
+/* Shared controls used by every operations page and dialog. */
+.ui-button { display:inline-flex;align-items:center;justify-content:center;gap:7px;font:500 13px/1.4 var(--font-sans);border-radius:5px;transition:background .15s,border-color .15s; }
+.ui-button-primary,.ui-button-secondary,.ui-button-danger {min-height:38px;padding:8px 14px;border:1px solid transparent;}
+.ui-button-primary {background:#313c29;color:#fffdf4;border-color:#313c29;}.ui-button-primary:hover {background:#435238;}
+.ui-button-secondary {background:#fcfaf5;color:#30352a;border-color:#cfc8ba;}.ui-button-secondary:hover {background:#efeee4;}
+.ui-button-danger {background:#954b43;color:#fff;border-color:#954b43;}.ui-button-danger:hover {background:#7e3c35;}
+.ui-button:disabled {opacity:.5;cursor:not-allowed;}.ui-button:focus-visible,.ui-input:focus-visible {outline:2px solid #798364;outline-offset:3px;}
+.ui-input {font:400 14px/1.5 var(--font-sans);color:#25291f;background:#fcfaf5;border:1px solid #cfc7b9;border-radius:5px;padding:9px 12px;min-height:40px;}
+.ui-input[type=checkbox],.ui-input[type=radio] {min-height:0;width:16px;height:16px;padding:0;accent-color:#586748;}
+.ui-input[aria-invalid=true] {border-color:#a15c50;}.ui-field {display:grid;gap:7px;}.ui-field label {font-size:13px;font-weight:600;}.ui-field p {font-size:12px;color:#686b5f;}.ui-field .ui-field-error {color:#954b43;}
+.ui-page-header,.ui-section-header {display:flex;align-items:center;justify-content:space-between;gap:20px;}.ui-page-header p,.ui-section-header p {font-size:14px;line-height:1.6;color:#686b5f;margin-top:7px;}.ui-header-actions {display:flex;align-items:center;gap:10px;}
+.ui-panel {background:#fcfaf5;border:1px solid #d9d2c5;border-radius:7px;overflow:hidden;}.ui-toolbar {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;}
+.ui-table {width:100%;text-align:left;border-collapse:collapse;}.ui-table th {font-size:12px;font-weight:600;color:#575a50;background:#ece8df;}.ui-table td {font-size:14px;}.ui-table th,.ui-table td {padding:14px 16px;border-bottom:1px solid #ded8ca;}
+.ui-empty-state {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:110px;padding:28px 18px;color:#666b5c;font-size:14px;text-align:center;}
+.ui-notice {display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 16px;border:1px solid #d3d7c9;border-radius:5px;font-size:13px;line-height:1.6;background:#f0f2e9;color:#4d5a43;}.ui-notice-error {border-color:#dfc2b8;background:#fbefea;color:#87473e;}.ui-notice-warning {border-color:#dfcfac;background:#faf3e3;color:#7a6237;}.ui-notice-success {background:#ecf2e7;color:#465c38;}
+.ui-pagination {display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid #d9d2c5;padding-top:16px;font-size:13px;color:#65695c;}.ui-pagination>div {display:flex;gap:8px;}
+.ui-spinner {display:inline-block;width:16px;height:16px;border:2px solid #bdc3b3;border-top-color:#4f6240;border-radius:50%;animation:ui-spin .8s linear infinite;}
+@keyframes ui-spin {to {transform:rotate(360deg)}}
+.ui-dialog {border:1px solid #d4cebf;border-radius:9px;background:#fcfaf5;color:#25291f;padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 40px);margin:auto;box-shadow:0 18px 70px #17171430;font-family:var(--font-sans);}.ui-dialog::backdrop {background:#17171470;}.ui-dialog-header {display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;border-bottom:1px solid #ded8ca;}.ui-dialog-header h2 {font-size:18px;font-weight:600;}.ui-dialog-body {padding:22px;}
+@media(max-width:640px) {.ui-page-header,.ui-section-header,.ui-pagination {align-items:flex-start;flex-direction:column;}.ui-dialog-body {padding:18px;}}
+@media(prefers-reduced-motion:reduce) {.ui-spinner {animation:none}}
+.ui-button.metric {display:block;text-align:left;border-radius:0;font-weight:400;}
+.ui-button.metric:first-child {border-radius:6px 0 0 6px;}.ui-button.metric:last-child {border-radius:0 6px 6px 0;}
+.ui-button.metric:hover {background:#f2f2e8;}
+.filter-tabs>.ui-button {border-radius:0;}
+.ui-input:disabled {background:#efede5;color:#828477;cursor:not-allowed;}
+.ui-input[readonly] {background:#f5f3eb;}

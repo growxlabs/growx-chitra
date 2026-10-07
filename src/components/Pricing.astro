@@ -1,0 +1,15 @@
+---
+import { plans, whatsappUrl } from '../site';
+
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<div class:list={['pricing-list', compact && 'pricing-list-compact']}>
+  {plans.map((plan) => (
+    <article class="price-item">
+      <div class="price-heading"><h3>{plan.name}</h3><span>{plan.price}</span></div>
+      <p class="price-images">{plan.detail}</p>
+      <a class="price-link" href={whatsappUrl} target="_blank" rel="noreferrer">Choose {plan.name.toLowerCase()} <span aria-hidden="true">↗</span></a>
+    </article>
+  ))}
+</div>

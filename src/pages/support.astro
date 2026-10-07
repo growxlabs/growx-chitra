@@ -1,0 +1,14 @@
+---
+import ResourceLayout from '../layouts/ResourceLayout.astro';
+import { whatsappUrl } from '../site';
+---
+<ResourceLayout title="Contact support" description="Get help with Chitra images, payments, business setup or data requests." summary="Need help with an image, a payment or your account? Contact us through WhatsApp and describe what happened.">
+<section class="support-contact"><p class="studio-kicker">CONTACT US ON WHATSAPP</p><h2>Tell us what you need help with.</h2><p>Include the details below so we can understand your request.</p><a class="button studio-primary" href={whatsappUrl} target="_blank" rel="noreferrer">Open WhatsApp <span aria-hidden="true">↗</span></a></section>
+<h2>What to include</h2>
+<dl class="support-topics">
+<div><dt>Images or business setup</dt><dd>Describe the step you were on, what you expected, and what happened instead.</dd></div>
+<div><dt>Payments or missing credits</dt><dd>Include your payment reference and the WhatsApp number used to purchase. For refund requests, read the <a href="/refund">refund policy</a>.</dd></div>
+<div><dt>Privacy or account data</dt><dd>Tell us what information you need help with. To request deletion, send <code>DELETE MY DATA</code>, then <code>CONFIRM DELETE</code> in WhatsApp.</dd></div>
+</dl>
+<aside class="support-safety"><strong>Keep your account details safe.</strong><p>Never send a password, full card number, bank credentials or one-time code.</p></aside>
+</ResourceLayout>

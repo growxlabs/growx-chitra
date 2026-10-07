@@ -1,0 +1,9 @@
+---
+import ResourceLayout from "../layouts/ResourceLayout.astro";
+const sections = [{"id": "not-allowed", "label": "Not allowed"}, {"id": "keep-product-images-honest", "label": "Keep product images honest"}, {"id": "enforcement", "label": "Enforcement"}];
+---
+<ResourceLayout title="Acceptable use" description="Image safety and acceptable-use boundaries for Growx Chitra." summary="What you can send to Chitra, what is not allowed, and how we handle rule violations." sections={sections} policy>
+<h2 id="not-allowed">Not allowed</h2><p>Do not submit or request edits to create, disguise or distribute:</p><ul><li>Sexual or 18+ imagery</li><li>Deepfakes or face swaps</li><li>Morphed imagery or identity manipulation</li><li>Images that violate another person’s privacy or rights</li><li>Misleading product depictions or unlawful content</li></ul>
+    <h2 id="keep-product-images-honest">Keep product images honest</h2><p>Use images of products you are authorized to sell or represent. Review outputs before sharing and do not use edited images to misrepresent a product’s identity, condition, ingredients, quality, origin or performance.</p>
+    <h2 id="enforcement">Enforcement</h2><p>We may reject or delete content, limit processing or suspend an account when needed to enforce these rules, protect people or comply with law. You can contact <a href="/support">Support</a> if you think we made a mistake.</p>
+</ResourceLayout>

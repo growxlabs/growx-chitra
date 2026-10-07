@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "growx-chitra-local-preview",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "vars": { "APP_ENV": "local" },
+  "images": { "binding": "IMAGES", "remote": false },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "growx-chitra-db",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }],
+  "queues": {
+    "producers": [{ "binding": "CHITRA_JOBS", "queue": "growx-chitra-jobs" }],
+    "consumers": [{ "queue": "growx-chitra-jobs", "max_batch_size": 5, "max_batch_timeout": 1, "max_retries": 5, "retry_delay": 60 }]
+  },
+  "triggers": { "crons": ["*/5 * * * *"] }
+}
